@@ -14,19 +14,18 @@ require_once __DIR__ . '/db_connect.php';
 $db = new DB_CONNECT();
  
 // get all products from products table
- $result = mysql_query("SELECT * FROM products") or die(mysql_error());
+// $result = mysql_query("SELECT * FROM products") or die(mysql_error());
 
-// $result = mysqli_query($db,"SELECT * FROM products") or die(mysqli_error($db));
-
- 
+ $result = mysqli_query($db,"SELECT * FROM products");
+  
 // check for empty result
-if (mysql_num_rows($result) > 0) {
+if (mysqli_num_rows($result) > 0) {
 //if (mysql_num_rows($result) > 0) {
     // looping through all results
     // products node
     $response["products"] = array();
  
-    while ($row = mysql_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
 // 	while ($row = mysql_fetch_array($result)) {
         // temp user array
         $product = array();
