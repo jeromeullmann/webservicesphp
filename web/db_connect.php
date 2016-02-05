@@ -32,6 +32,8 @@ class DB_CONNECT {
         $password = $url["pass"];
         $db = substr($url["path"], 1);
         
+        echo "db_connect : récupération CLEARDB_DATABASE_URL";
+        
         echo $server;
         echo $username;
         echo $password;
