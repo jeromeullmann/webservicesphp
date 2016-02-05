@@ -10,8 +10,7 @@ require_once __DIR__ . '/db_connect.php';
 // connecting to db
 $db = new DB_CONNECT();
  
-// get all products from products table
-// $result = mysql_query("SELECT * FROM products") or die(mysql_error());
+echo $db;
 
  $result = mysqli_query($db," CREATE TABLE IF NOT EXISTS `products` (
   `pid` int(11) NOT NULL AUTO_INCREMENT,
@@ -22,6 +21,5 @@ $db = new DB_CONNECT();
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`pid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;  ");
-  
-}
+
 ?>
