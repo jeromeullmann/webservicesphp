@@ -16,7 +16,13 @@ $db = new DB_CONNECT();
 // get all products from products table
 // $result = mysql_query("SELECT * FROM products") or die(mysql_error());
 
+echo "\n launch requete";
+echo $db;
+
  $result = mysqli_query($db,"SELECT * FROM products");
+
+echo "\n result requete";
+echo $result
   
 // check for empty result
 if (mysqli_num_rows($result) > 0) {
