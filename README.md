@@ -1,6 +1,10 @@
+# Status
+
+On dev
+
 # webservices php
 
-Un exemple de mise en oeuvre de webservice en php pour la gestin d'une table de produit
+Un exemple de mise en oeuvre de webservice en php pour la gestion d'une table de produit
 
 ## Deploying
 
@@ -21,6 +25,4 @@ For more information about using PHP on Heroku, see these Dev Center articles:
 - [PHP on Heroku](https://devcenter.heroku.com/categories/php)
 
 
-mysql://bcbe8482c15e5d:1dc79c5d@eu-cdbr-west-01.cleardb.com/heroku_4cbc4b2b6f94408?reconnect=true
-CLEARDB_DATABASE_URL => mysql://[username]:[password]@[host]/[database name]?reconnect=true
-ports 3306
+
