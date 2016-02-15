@@ -1,5 +1,7 @@
 <?php
 
+// Status : ok 
+
 /* DATABASE_URL => mysql://[username]:[password]@[host]/[database name]?reconnect=true */
 /* Local : mysql://root@localhost/products */
 

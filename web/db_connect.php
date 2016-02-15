@@ -1,6 +1,8 @@
 <?php
  
- // http://www.w3schools.com/php/func_mysqli_query.asp
+    // http://www.w3schools.com/php/func_mysqli_query.asp
+    // DATABASE_URL => mysql://[username]:[password]@[host]/[database name]?reconnect=true */
+    //  Local : mysql://root@localhost/products */
  
 /**
  * A class file to connect to database
@@ -23,32 +25,34 @@ class DB_CONNECT {
      * Function to connect with database
      */
     function connect() {
-        // retrive database connection variables
         
-        $url = parse_url(getenv("CLEARDB_DATABASE_URL")); 
+        // retrieve databse context : Local or On Cloud (heroku)
+
+        $env = getenv('CLEARDB_DATABASE_URL');
+        if ($env == "") {
+            echo "Local";
+            $server = "localhost";
+            $username = "root";
+            $password = "";
+            $db = "products";
+        } else {
         
-        $server = $url["host"];
-        $username = $url["user"];
-        $password = $url["pass"];
-        $db = substr($url["path"], 1);
+            $url = parse_url($env);
+            $server = $url["host"];
+            $username = $url["user"];
+            $password = $url["pass"];
+            $db = substr($url["path"], 1);
         
-        echo "db_connect : récupération CLEARDB_DATABASE_URL";
-        
-        echo $server;
-        echo $username;
-        echo $password;
-        echo $db;
-                 
-        // Connecting to mysql database
-                
+        }
+
         $con = new mysqli($server, $username, $password, $db);
-        if (mysqli_connect_errno())
-            {
-                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            }
+        
+        if (mysqli_connect_errno()) {
+         echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
         
         // returing connection cursor
-        return $con;
+            return $con;
     }
  
     /**
