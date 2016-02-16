@@ -5,6 +5,8 @@
  * A product is identified by product id (pid)
  */
  
+// usage : http://localhost/tp2/update_product.php?pid=8&price=600&name=Royaume&description=RSC%20Royaume%2013942 
+ 
 // array for JSON response
 $response = array();
  
@@ -21,9 +23,11 @@ if (isset($_GET['pid']) && isset($_GET['name']) && isset($_GET['price']) && isse
  
     // connecting to db
     $db = new DB_CONNECT();
+    
+    $con = $db->connect();
  
     // mysql update row with matched pid
-    $result = mysql_query("UPDATE products SET name = '$name', price = '$price', description = '$description' WHERE pid = $pid");
+    $result = $con->query("UPDATE products SET name = '$name', price = '$price', description = '$description' WHERE pid = $pid");
  
     // check if row inserted or not
     if ($result) {

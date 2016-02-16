@@ -17,10 +17,11 @@ $db = new DB_CONNECT();
  
 // get all products from products table
 
-$result = $db->query($db,"SELECT * FROM products");
+$con = $db->connect();
+
+$result = $con->query("SELECT * FROM products");
 
 $row_cnt = $result->num_rows;
-echo $row_cnt;
   
 // check for empty result
 

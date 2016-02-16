@@ -5,6 +5,8 @@
  * A product is identified by product id (pid)
  */
  
+// usage : http://localhost/tp2/delete_product.php?pid=4 
+ 
 // array for JSON response
 $response = array();
  
@@ -18,12 +20,16 @@ if (isset($_GET['pid'])) {
     // connecting to db
     $db = new DB_CONNECT();
  
+    $con = $db->connect();
+    
     // mysql update row with matched pid
-    $result = mysql_query("DELETE FROM products WHERE pid = $pid");
- 
+    $result = $con->query("DELETE FROM products WHERE pid = $pid");
+         
     // check if row deleted or not
-    if (mysql_affected_rows() > 0) {
-        // successfully updated
+ //   if (mysqli_affected_rows() > 0) {
+ 
+    if ($result > 0) {   
+       // successfully updated
         $response["success"] = 1;
         $response["message"] = "Product successfully deleted";
  

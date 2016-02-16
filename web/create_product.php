@@ -5,6 +5,8 @@
  * All product details are read from HTTP Post Request
  */
  
+// usage : http://localhost/android_connect/create_product.php?price=500&name=Royaume&description=RSC%20Royaume%20139%2042 
+ 
 // array for JSON response
 $response = array();
 
@@ -21,9 +23,12 @@ if (isset($_GET['name']) && isset($_GET['price']) && isset($_GET['description'])
  
     // connecting to db
     $db = new DB_CONNECT();
-	
+	$con = $db->connect();
+    
+    $con = $db->connect();
+    
     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO products(name, price, description) VALUES('$name', '$price', '$description')");
+    $result = $con->query("INSERT INTO products(name, price, description) VALUES('$name', '$price', '$description')");
  
     // check if row inserted or not
     if ($result) {

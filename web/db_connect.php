@@ -9,6 +9,8 @@
  */
 class DB_CONNECT {
  
+    var $con;
+ 
     // constructor
     function __construct() {
         // connecting to database
@@ -30,19 +32,16 @@ class DB_CONNECT {
 
         $env = getenv('CLEARDB_DATABASE_URL');
         if ($env == "") {
-            echo "Local";
             $server = "localhost";
             $username = "root";
             $password = "";
             $db = "products";
         } else {
-        
             $url = parse_url($env);
             $server = $url["host"];
             $username = $url["user"];
             $password = $url["pass"];
             $db = substr($url["path"], 1);
-        
         }
 
         $con = new mysqli($server, $username, $password, $db);
@@ -52,6 +51,7 @@ class DB_CONNECT {
         }
         
         // returing connection cursor
+            $this->con = $con;          
             return $con;
     }
  
@@ -61,7 +61,7 @@ class DB_CONNECT {
     function close() {
         // closing db connection
         
-        return mysqli.close($con);
+        return mysqli_close($this->con);
         
     }
  
