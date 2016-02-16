@@ -60,4 +60,4 @@ INSERT INTO `products` (`pid`, `name`, `price`, `description`, `created_at`, `up
 (8, 'Royaume', '600.00', 'RSC Royaume 13942', '2016-02-16 20:46:45', NULL);
 
 
-
+--- END ---
